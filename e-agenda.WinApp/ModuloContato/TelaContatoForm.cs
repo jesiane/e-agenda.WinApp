@@ -16,7 +16,7 @@
                 txtId.Text = value.id.ToString();
                 txtNome.Text = value.nome;
                 //   txtTelefone.Text = value.telefone;
-                mTelefone.Text = value.telefone;
+                mTelefone.Text = value.telefone; // formatação do proprio elemento 
 
                 txtEmail.Text = value.email;
                 txtCargo.Text = value.cargo;
@@ -42,7 +42,7 @@
 
             if (validacao == true)
             {
-                MessageBox.Show("email digitado é valido");
+             //   MessageBox.Show("email digitado é valido");
             }
             else
             {

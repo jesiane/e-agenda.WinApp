@@ -26,10 +26,10 @@ namespace e_Agenda.WinApp.ModuloCompromisso
         public override string ToString()
         {
             string contato = contatoCompromisso == null ?
-                " |Sem Contato|" : ", Contato: " + contatoCompromisso.nome;
+                " - Sem Contato" : ", Contato: " + contatoCompromisso.nome;
             return "Id: " + id + ", Assunto: " + assunto + ", Local: " + local +
-                ", Data: " + data.ToString() + ", HoraInício: " + horaInicio.ToString("HH:mm") + 
-                ", HoraTérmino: " + horaTermino.ToString("HH:mm") + contato;
+                ", Data: " + data.ToString() + ", Hora Início: " + horaInicio.ToString("HH:mm") + 
+                ", Hora Término: " + horaTermino.ToString("HH:mm") + contato;
         }
     }
 }
