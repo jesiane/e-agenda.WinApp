@@ -37,6 +37,7 @@ namespace e_Agenda.WinApp.ModuloCompromisso
                 txtId.Text = value.id.ToString();
                 txtAssunto.Text = value.assunto;
                 txtLocal.Text = value.local;
+                txtLink.Text = value.local;
                 dateTimeInicio.Value = value.horaInicio;
                 dateTimeTermino.Value = value.horaTermino;
                 dateTimeData.Value = value.data;
@@ -56,6 +57,7 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
             string assunto = txtAssunto.Text;
             string local = txtLocal.Text;
+            string link = txtLink.Text;
             DateTime data = dateTimeData.Value;
             DateTime horaInicio = dateTimeInicio.Value;
             DateTime horaTermino = dateTimeTermino.Value;
@@ -67,5 +69,7 @@ namespace e_Agenda.WinApp.ModuloCompromisso
             if (txtId.Text != "0")
                 compromisso.id = Convert.ToInt32(txtId.Text);
         }
+
+
     }
 }
