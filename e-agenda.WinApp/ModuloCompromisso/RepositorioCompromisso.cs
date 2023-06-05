@@ -1,42 +1,29 @@
-﻿namespace e_Agenda.WinApp.ModuloCompromisso
+﻿using e_Agenda.WinApp.Compartilhado;
+
+namespace e_Agenda.WinApp.ModuloCompromisso
 {
-    public class RepositorioCompromisso
+    public class RepositorioCompromisso : RepositorioEmMemoriaBase<Compromisso>
     {
-        List<Compromisso> compromissos = new List<Compromisso>();
-        private static int contador;
-
-        public void Inserir(Compromisso compromisso)
+        public RepositorioCompromisso(List<Compromisso> compromissos)
         {
-            contador++;
-            compromisso.id = contador;
-            compromissos.Add(compromisso);
+            this.listaRegistros = compromissos;
         }
 
-        public List<Compromisso> SelecionarTodos()
+        //Selecionar Compromissos Passados
+        public List<Compromisso> SelecionarCompromissosPassados(DateTime hoje)
         {
-            return compromissos;
+            return listaRegistros.Where(x => x.data.Date < hoje.Date).ToList();
         }
 
-        public void Editar(Compromisso compromisso)
+        //Selecionar Compromissos Futuros ( dataInicio, dataFinal)
+        public List<Compromisso> SelecionarCompromissosFuturos(DateTime dataInicio, DateTime dataFinal)
         {
-        Compromisso compromissoSelecionado = SelecionarPorId(compromisso.id);
-
-        compromissoSelecionado.assunto = compromisso.assunto;
-        compromissoSelecionado.local = compromisso.local;
-        compromissoSelecionado.data = compromisso.data;
-        compromissoSelecionado.horaInicio = compromisso.horaInicio;
-        compromissoSelecionado.horaTermino = compromisso.horaTermino;
-        compromissoSelecionado.contatoCompromisso = compromisso.contatoCompromisso;
+            return listaRegistros
+                .Where(x => x.data > dataInicio)
+                .Where(x => x.data < dataFinal)
+                .ToList();
         }
 
-        private Compromisso SelecionarPorId(int id)
-        {
-            return compromissos.FirstOrDefault(x => x.id == id);
-        }
 
-        public void Excluir(Compromisso compromisso)
-        {
-            compromissos.Remove(compromisso);
-        }
     }
 }

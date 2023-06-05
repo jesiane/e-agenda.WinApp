@@ -1,6 +1,6 @@
-﻿namespace e_Agenda.WinApp.ModuloTarefa
+﻿namespace e_Agenda.WinApp.ModuloCompromisso
 {
-    partial class ListagemTarefaControl
+    partial class TabelaCompromissoControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,31 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listTarefas = new ListBox();
+            gridCompromissos = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)gridCompromissos).BeginInit();
             SuspendLayout();
             // 
-            // listTarefas
+            // gridCompromissos
             // 
-            listTarefas.Dock = DockStyle.Fill;
-            listTarefas.FormattingEnabled = true;
-            listTarefas.ItemHeight = 15;
-            listTarefas.Location = new Point(0, 0);
-            listTarefas.Name = "listTarefas";
-            listTarefas.Size = new Size(522, 383);
-            listTarefas.TabIndex = 0;
+            gridCompromissos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridCompromissos.Dock = DockStyle.Fill;
+            gridCompromissos.Location = new Point(0, 0);
+            gridCompromissos.Name = "gridCompromissos";
+            gridCompromissos.RowTemplate.Height = 25;
+            gridCompromissos.Size = new Size(353, 233);
+            gridCompromissos.TabIndex = 0;
             // 
-            // ListagemTarefaControl
+            // TabelaCompromissoControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(listTarefas);
-            Name = "ListagemTarefaControl";
-            Size = new Size(522, 383);
+            Controls.Add(gridCompromissos);
+            Name = "TabelaCompromissoControl";
+            Size = new Size(353, 233);
+            ((System.ComponentModel.ISupportInitialize)gridCompromissos).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListBox listTarefas;
+        private DataGridView gridCompromissos;
     }
 }

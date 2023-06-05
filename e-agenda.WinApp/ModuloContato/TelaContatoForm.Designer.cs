@@ -34,7 +34,6 @@
             txtId = new TextBox();
             label2 = new Label();
             txtNome = new TextBox();
-            txtTelefone = new TextBox();
             txtCargo = new TextBox();
             txtEmail = new TextBox();
             txtEmpresa = new TextBox();
@@ -67,6 +66,7 @@
             btnCancelar.TabIndex = 1;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // label1
             // 
@@ -101,14 +101,6 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(395, 23);
             txtNome.TabIndex = 5;
-            // 
-            // txtTelefone
-            // 
-            txtTelefone.Location = new Point(90, 144);
-            txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(149, 23);
-            txtTelefone.TabIndex = 6;
-            txtTelefone.Text = "\r\n";
             // 
             // txtCargo
             // 
@@ -179,6 +171,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(497, 226);
             Controls.Add(mTelefone);
             Controls.Add(label6);
@@ -188,13 +181,13 @@
             Controls.Add(txtEmpresa);
             Controls.Add(txtEmail);
             Controls.Add(txtCargo);
-            Controls.Add(txtTelefone);
             Controls.Add(txtNome);
             Controls.Add(label2);
             Controls.Add(txtId);
             Controls.Add(label1);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
+            ForeColor = SystemColors.ActiveCaptionText;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -202,6 +195,7 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Contatos";
+            Load += TelaContatoForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,7 +208,6 @@
         private TextBox txtId;
         private Label label2;
         private TextBox txtNome;
-        private TextBox txtTelefone;
         private TextBox txtCargo;
         private TextBox txtEmail;
         private TextBox txtEmpresa;

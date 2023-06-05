@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-
-namespace e_Agenda.WinApp.ModuloCompromisso
+﻿namespace e_Agenda.WinApp.ModuloCompromisso
 {
     public partial class ListagemCompromissoControl : UserControl
     {
@@ -13,18 +9,17 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
         public void AtualizarRegistros(List<Compromisso> compromissos)
         {
-            listCompromisso.Items.Clear();
+            listCompromissos.Items.Clear();
 
-            foreach (Compromisso item in compromissos)
+            foreach (Compromisso compromisso in compromissos)
             {
-                listCompromisso.Items.Add(item);
+                listCompromissos.Items.Add(compromisso);
             }
         }
 
         public Compromisso ObterCompromissoSelecionado()
         {
-            return (Compromisso)listCompromisso.SelectedItem;
+            return (Compromisso)listCompromissos.SelectedItem;
         }
-
     }
 }

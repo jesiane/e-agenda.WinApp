@@ -4,15 +4,15 @@ namespace e_Agenda.WinApp.ModuloContato
 {
     public class ControladorContato : ControladorBase
     {
-        private RepositorioContato repositorioContato;
-        private ListagemContatoControl listagemContato;
+        private IRepositorioContato repositorioContato;
+        private TabelaContatoControl tabelaContato;
 
-        public ControladorContato(RepositorioContato repositorioContato)
+        public ControladorContato(IRepositorioContato repositorioContato)
         {
             this.repositorioContato = repositorioContato;
         }
 
-        public override string ToolTipInserir { get { return "Inserir novo Contato";  } }
+        public override string ToolTipInserir { get { return "Inserir novo Contato"; } }
 
         public override string ToolTipEditar { get { return "Editar Contato existente"; } }
 
@@ -26,50 +26,56 @@ namespace e_Agenda.WinApp.ModuloContato
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                Contato contato = telaContato.Contato;
+                Contato contato = telaContato.ObterContato();
 
                 repositorioContato.Inserir(contato);
-
-                CarregarContatos();
             }
+            CarregarContatos();
         }
 
         public override void Editar()
         {
-            Contato contato = listagemContato.ObterContatoSelecionado();
+            Contato contato = ObterContatoSelecionado();
 
             if (contato == null)
             {
-                MessageBox.Show($"Selecione um contato primeiro!", 
+                MessageBox.Show($"Selecione um contato primeiro!",
                     "Edição de Contatos",
-                    MessageBoxButtons.OK, 
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 return;
             }
 
             TelaContatoForm telaContato = new TelaContatoForm();
-            telaContato.Contato = contato;
+            telaContato.ConfigurarTela(contato);
 
             DialogResult opcaoEscolhida = telaContato.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repositorioContato.Editar(telaContato.Contato);
-
-                CarregarContatos();
+                Contato contatoAtualizado = telaContato.ObterContato();
+                repositorioContato.Editar(contatoAtualizado.id, contatoAtualizado);
             }
+            CarregarContatos();
+        }
+
+        private Contato ObterContatoSelecionado()
+        {
+            int id = tabelaContato.ObterIdSelecionado();
+
+            return repositorioContato.SelecionarPorId(id);
         }
 
         public override void Excluir()
-        {            
-            Contato contato = listagemContato.ObterContatoSelecionado();
+        {
+            Contato contato = ObterContatoSelecionado();
 
             if (contato == null)
             {
-                MessageBox.Show($"Selecione um contato primeiro!", 
+                MessageBox.Show($"Selecione um contato primeiro!",
                     "Exclusão de Contatos",
-                    MessageBoxButtons.OK, 
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 return;
@@ -81,33 +87,30 @@ namespace e_Agenda.WinApp.ModuloContato
             if (opcaoEscolhida == DialogResult.OK)
             {
                 repositorioContato.Excluir(contato);
-
-                CarregarContatos();
             }
+            CarregarContatos();
         }
 
         private void CarregarContatos()
         {
             List<Contato> contatos = repositorioContato.SelecionarTodos();
 
-            listagemContato.AtualizarRegistros(contatos);
+            tabelaContato.AtualizarRegistros(contatos);
         }
 
         public override UserControl ObterListagem()
         {
-            if (listagemContato == null)
-                listagemContato = new ListagemContatoControl();
+            if (tabelaContato == null)
+                tabelaContato = new TabelaContatoControl();
 
             CarregarContatos();
 
-            return listagemContato;
+            return tabelaContato;
         }
 
         public override string ObterTipoCadastro()
         {
-            return "Cadastro de Contatos";            
+            return "Cadastro de Contatos";
         }
-
-        
     }
 }

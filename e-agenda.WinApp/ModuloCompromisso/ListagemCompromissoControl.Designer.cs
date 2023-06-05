@@ -28,43 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            listCompromisso = new ListBox();
-            panel1.SuspendLayout();
+            listCompromissos = new ListBox();
             SuspendLayout();
             // 
-            // panel1
+            // listCompromissos
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Controls.Add(listCompromisso);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(150, 150);
-            panel1.TabIndex = 0;
+            listCompromissos.Dock = DockStyle.Fill;
+            listCompromissos.FormattingEnabled = true;
+            listCompromissos.ItemHeight = 15;
+            listCompromissos.Location = new Point(0, 0);
+            listCompromissos.Name = "listCompromissos";
+            listCompromissos.Size = new Size(428, 352);
+            listCompromissos.TabIndex = 0;
             // 
-            // listCompromisso
-            // 
-            listCompromisso.Dock = DockStyle.Fill;
-            listCompromisso.FormattingEnabled = true;
-            listCompromisso.ItemHeight = 15;
-            listCompromisso.Location = new Point(0, 0);
-            listCompromisso.Name = "listCompromisso";
-            listCompromisso.Size = new Size(150, 150);
-            listCompromisso.TabIndex = 0;
-            // 
-            // listagemCompromissoControl
+            // ListagemCompromissoControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(panel1);
-            Name = "listagemCompromissoControl";
-            panel1.ResumeLayout(false);
+            Controls.Add(listCompromissos);
+            Name = "ListagemCompromissoControl";
+            Size = new Size(428, 352);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
-        private ListBox listCompromisso;
+        private ListBox listCompromissos;
     }
 }
